@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Quiz App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- User Form Screen -->
+<div id="user-form" class="active container">
+  <h2>Enter Your Details</h2>
+  <input type="text" id="name" placeholder="Full Name">
+  <input type="email" id="email" placeholder="Email">
+  <input type="text" id="roll" placeholder="Roll Number">
+  <input type="text" id="institute" placeholder="Institute">
+  <button id="continue-btn">Continue</button>
+</div>
+
+<!-- Instruction Screen -->
+<div id="instruction-box" class="container">
+  <h2>Quiz Instructions</h2>
+  <div class="info-box">
+    ➤ Total Questions: 20 <br>
+    ➤ Total Time: 20 Minutes <br>
+    ➤ Passing Marks: 60% <br>
+    ➤ Each Question Time: 1 Minute
+  </div>
+  <button id="start-btn">Start Quiz</button>
+</div>
+
+<!-- Quiz Screen -->
+<div id="quiz-box" class="container">
+  <div class="timer-box">Time Left: <span id="time">60s</span></div>
+  <h3 id="question-text"></h3>
+  <div id="options"></div>
+  <button id="next-btn" disabled>Next</button>
+</div>
+
+<!-- Result Screen -->
+<div id="result-box" class="container">
+  <h2>Student Info</h2>
+  <p><b>Name:</b> <span id="r_name"></span></p>
+  <p><b>Email:</b> <span id="r_email"></span></p>
+  <p><b>Roll:</b> <span id="r_roll"></span></p>
+  <p><b>Institute:</b> <span id="r_inst"></span></p>
+
+  <hr style="margin:12px 0;border:1px solid #00eaff;">
+
+  <h2>Result</h2>
+  <p>Total Questions: 20</p>
+  <p>Correct: <span id="correct"></span></p>
+  <p>Wrong: <span id="wrong"></span></p>
+  <p>Percentage: <span id="percent"></span>%</p>
+  <h3 id="final-status"></h3>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
