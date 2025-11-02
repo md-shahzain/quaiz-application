@@ -1,11 +1,10 @@
-const userForm=document.getElementById("user-form");
-const instructionBox=document.getElementById("instruction-box");
-const quizBox=document.getElementById("quiz-box");
-const resultBox=document.getElementById("result-box");
+var userForm = document.getElementById("user-form");
+var instructionBox = document.getElementById("instruction-box");
+var quizBox = document.getElementById("quiz-box");
+var resultBox = document.getElementById("result-box");
 
-let userName,userEmail,userRoll,userInst;
+var userName,userEmail,userRoll,userInst;
 
-// Get user info
 document.getElementById("continue-btn").onclick=()=>{
   userName=document.getElementById("name").value;
   userEmail=document.getElementById("email").value;
@@ -21,7 +20,6 @@ document.getElementById("continue-btn").onclick=()=>{
   instructionBox.classList.add("active");
 };
 
-// Start quiz
 document.getElementById("start-btn").onclick=()=>{
   instructionBox.classList.remove("active");
   quizBox.classList.add("active");
@@ -52,24 +50,24 @@ let questions=[
 {q:"Default JS output in browser?",o:["Console","Screen","File","Alert"],a:0},
 ];
 
-let index=0,correct=0,wrong=0,timer;
+var index=0,correct=0,wrong=0,timer;
 
 function startQuiz(){ loadQuestion(); }
 
 function loadQuestion(){
   document.getElementById("next-btn").disabled=true;
-  let q=questions[index];
+  var q = questions[index];
   document.getElementById("question-text").innerText=`${index+1}. ${q.q}`;
-  let opt="";
+  var opt="";
   q.o.forEach((o,i)=> opt+=`<div class='option' onclick='selectOption(${i})'>${o}</div>`);
-  document.getElementById("options").innerHTML=opt;
+  document.getElementById("options").innerHTML = opt;
   startTimer();
 }
 
 function selectOption(sel){
-  let opts=document.querySelectorAll('.option');
+  let opts = document.querySelectorAll('.option');
   opts.forEach(o=>o.style.pointerEvents="none");
-  let ans=questions[index].a;
+  var ans=questions[index].a;
   if(sel===ans){correct++;opts[sel].classList.add("correct");}
   else{wrong++;opts[sel].classList.add("wrong");opts[ans].classList.add("correct");}
   document.getElementById("next-btn").disabled=false;
@@ -78,7 +76,7 @@ function selectOption(sel){
 document.getElementById("next-btn").onclick=()=>{
   clearInterval(timer);
   index++;
-  if(index<questions.length) loadQuestion();
+  if(index < questions.length) loadQuestion();
   else finishQuiz();
 };
 
@@ -113,3 +111,4 @@ function finishQuiz(){
   document.getElementById("percent").innerText=p.toFixed(0);
   document.getElementById("final-status").innerText=p>=60?"Pass ✅":"Fail ❌";
 }
+
